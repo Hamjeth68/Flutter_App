@@ -37,7 +37,7 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(Questions[questionIndex]),
+            Question(Questions[questionIndex]),
             RaisedButton(
               child: Text('Answer1'),
               onPressed: answerQuestion,
