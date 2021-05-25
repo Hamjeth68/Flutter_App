@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
   }
 }
 
+//mystate class
 class MyAppState extends State<MyApp> {
   static const questions = [
     {
