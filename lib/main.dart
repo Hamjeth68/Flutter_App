@@ -1,9 +1,11 @@
+import 'package:basic/result.dart';
 import 'package:flutter/material.dart';
 
 //my files
 import './question.dart';
 import './answer.dart';
 import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,24 +21,36 @@ class _MyAppState extends State<MyApp> {
   static const _questions = [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 50},
+        {'text': 'Red', 'score': 13},
+        {'text': 'Green', 'score': 15},
+        {'text': 'White', 'score': 5}
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Rabit', 'Cat', 'Dog', 'Bird'],
+      'answers': [
+        {'text': 'Rabit', 'score': 11},
+        {'text': 'Cat', 'score': 14},
+        {'text': 'Dog', 'score': 32},
+        {'text': 'Bird', 'score': 18}
+      ],
     },
     {
       'questionText': 'What\'s your favorite Country?',
-      'answers': ['German', 'italy', 'France', 'London'],
+      'answers': [
+        {'text': 'German', 'score': 50},
+        {'text': 'italy', 'score': 45},
+        {'text': 'France', 'score': 15},
+        {'text': 'London', 'score': 13}
+      ],
     },
   ];
   var questionIndex = 0;
+  var _totalScore = 0;
 
-  void answerQuestion() {
-    if (questionIndex < _questions.length) {
-      print('We have more questions!');
-    }
-
+  void answerQuestion(int score) {
     setState(() {
       questionIndex = questionIndex + 1;
     });
@@ -56,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: questionIndex,
                 questions: _questions,
               )
-            : Center(child: Text('You did it!')),
+            : Result(),
       ),
     );
   }
